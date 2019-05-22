@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+
+    <classPathEntry
+            location="D:/code/e3mall_parent/e3mall_manager/e3mall_manager_service/src/main/resources/mybatis/mysql-connector-java-5.1.30.jar"/>
+
+    <context id="doyumDB" targetRuntime="MyBatis3">
+        <property name="autoDelimitKeywords" value="true"/>
+        <property name="beginningDelimiter" value="`"/>
+        <property name="endingDelimiter" value="`"/>
+        <plugin type="org.mybatis.generator.plugins.SerializablePlugin"/>
+        <commentGenerator>
+            <property name="suppressAllComments" value="true"/>
+            <property name="suppressDate" value="true"/>
+        </commentGenerator>
+
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:mysql://localhost:3306/e3mall?characterEncoding=utf8"
+                        userId="root" password="root"></jdbcConnection>
+
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false"/>
+        </javaTypeResolver>
+
+        <javaModelGenerator targetPackage="com.e3mall_manager.e3mall_manager_pojo.auto"
+                            targetProject="D:/code/e3mall_parent/e3mall_manager/e3mall_manager_pojo/src/main/java">
+            <property name="enableSubPackages" value="true"/>
+            <property name="trimStrings" value="true"/>
+        </javaModelGenerator>
+
+        <sqlMapGenerator targetPackage="com.e3mall_manager.e3mall_manager_dao.auto"
+                         targetProject="D:/code/e3mall_parent/e3mall_manager/e3mall_manager_dao/src/main/java">
+            <property name="enableSubPackages" value="true"/>
+        </sqlMapGenerator>
+
+        <javaClientGenerator type="XMLMAPPER"
+                             targetPackage="com.e3mall_manager.e3mall_manager_dao.auto"
+                             targetProject="D:/code/e3mall_parent/e3mall_manager/e3mall_manager_dao/src/main/java">
+            <property name="enableSubPackages" value="true"/>
+        </javaClientGenerator>
+
+        <!--附件表-->
+        <table tableName="tb_user" domainObjectName="TbUser">
+            <!--<property name="rootClass" value="com.zxpt.mybatis.bean.BaseBean"></property>-->
+            <generatedKey column="id" sqlStatement="Mysql" identity="true" />
+        </table>
+
+    </context>
+</generatorConfiguration>
+        <!-- CMD下执行 -->
+        <!-- mvn install:install-file -Dfile=D:/workspace-zxpt-trunk/zxpt/zxpt-mybatis-generator/target/zxpt-mybatis-generator-1.0-SNAPSHOT.jar -DgroupId=zxpt -DartifactId=zxpt-mybatis-generator -Dversion=1.0-SNAPSHOT -Dpackaging=jar -->
+        <!-- ta-mybatis-generator 工程上右键->Run As->Maven Build打开窗口后在Goals栏填写： mybatis-generator:generate -->
+        <!-- 然后run可生成代码 -->
